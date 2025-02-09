@@ -82,40 +82,40 @@ document.getElementById('Tadd-reminder-btn').addEventListener('click', function 
     const li = document.createElement('li');
     li.textContent = reminderText;
 
-    // Create timer display
+    
     const timerDisplay = document.createElement('span');
     timerDisplay.classList.add('timer');
     timerDisplay.textContent = `Time left: ${timerDuration}s`;
     li.appendChild(timerDisplay);
 
-    // Start countdown timer
+    
     let countdown = timerDuration;
     const interval = setInterval(function () {
         countdown -= 1;
         timerDisplay.textContent = `Time left: ${countdown}s`;
 
         if (countdown <= 0) {
-            clearInterval(interval);  // Stop the timer when it hits 0
+            clearInterval(interval);  
             timerDisplay.textContent = 'Time is up!';
             alert(`Reminder: ${reminderText} is due!`);
         }
-    }, 1000); // Update every second
+    }, 1000); 
 
-    // Create delete button for the reminder
+    
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', function () {
-        clearInterval(interval);  // Stop the timer if reminder is deleted
+        clearInterval(interval);  
         reminderList.removeChild(li);
     });
 
-    // Append delete button to the list item
+    
     li.appendChild(deleteBtn);
 
-    // Append the list item to the reminder list
+    
     reminderList.appendChild(li);
 
-    // Clear the input fields
+    
     reminderInput.value = '';
     timerInput.value = '';
 });
